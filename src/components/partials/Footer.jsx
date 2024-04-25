@@ -3,7 +3,7 @@ import { PiCaretDownFill, PiTranslate } from 'react-icons/pi'
 
 const Footer = () => {
   return (
-    <footer className='features border-t-[5px] border-b-[5px] border-gray-500 bg-black py-12 text-white'>
+    <footer className='features border-t-[5px]  border-gray-500 bg-black py-12 text-white'>
         <div className='max-w-[1000px] mx-auto px-4 mb-10'>
         <p className='text-[#b3b3b3] underline mt-10'>Questions? Contact us.</p>
             <div className='grid grid-cols-4 mt-5 place-items-start text-[#b3b3b3] gap-10'>

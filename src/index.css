@@ -98,3 +98,33 @@
   text-xl
   mb-5
 }
+
+.slick-dots {
+  @apply absolute top-[-50px] text-right pointer-events-none
+}
+
+.slick-dots li button:before {
+  @apply content-[''] w-[22px] h-[3px] bg-[#4f4f4f] mx-1 pointer-events-auto
+    
+}
+.slick-arrow:hover svg  {
+  @apply opacity-100
+}
+
+.slick-next, .slick-prev {
+  @apply h-full z-20
+}
+
+.slick-next, .slick-prev{
+  @apply h-full opacity-50 hover:opacity-100 flex flex-col justify-center items-center mt-[-2px];
+}
+.slick-next::before, .slick-prev::before{
+  @apply hidden;
+}
+.slick-next svg, .slick-prev svg {
+  @apply h-fit  text-white text-4xl opacity-0 ;
+}
+
+.movie__info::before {
+  @apply content-[''] absolute bottom-full left-0 h-[100px] w-full  block  bg-gradient-to-t from-[rgba(20,20,20,1)] from-15% via-[rgba(20,20,20,.4)] via-60% to-transparent
+}
