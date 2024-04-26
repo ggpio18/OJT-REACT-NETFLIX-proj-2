@@ -1,19 +1,27 @@
 import React from 'react'
 import { FaPlay, FaPlusCircle, FaThumbsUp, FaTimesCircle } from 'react-icons/fa'
 import { baseImgUrl2 } from '../../helpers/functions-general';
+import MovieRelatedCard from './MovieRelatedCard';
+import { movies } from './data';
+
 
 const ModalMovieInfo = ({setMovieInfo, movieData}) => {
 
     const handleClose = () => setMovieInfo(false);
 
+    const getRelatedGenre = movies.filter((movie) => movie.genre === movieData.genre && movie.title !== movieData.title)
+
+    console.log(getRelatedGenre)
+
+
   return (
     <div className='fixed top-0 left-0 isolate w-full h-screen'>
-        <div className="backdrop absolute top-0 left-0 h-full w-full bg-black/80"> </div>
+        <div className="backdrop absolute top-0 left-0 h-full w-full bg-black/80"> </div>  
 
-        <main className=' max-w-[700px] w-full bg-[#141414]  text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] max-h-[700px] h-full'>
+        <main className=' max-w-[700px] w-full bg-[#141414]  text-white absolute left-1/2 top-1/2 -translate-x-1/2 max-h-[900px] -translate-y-1/2 z-[9999]  h-full'>
             <div className='modal__banner'>
                 <div className='relative'>
-                    <img src={`${baseImgUrl2}/movie/${movieData.image}`} alt=""  className='opacity-80 w-full h-400px bg-cover' />
+                    <img src={`${baseImgUrl2}/movie/${movieData.image}`} alt=""  className='opacity-80 w-full max-h-[400px] h-full bg-covr brightness-50 object-contain'  />
                     <button onClick={handleClose} type='button' className='absolute top-4 right-4'><FaTimesCircle className='text-[#b5b5b5]'/>
                     </button>
 
@@ -34,8 +42,7 @@ const ModalMovieInfo = ({setMovieInfo, movieData}) => {
                             <p className='p-0.5 border border-white inline text-xs'>{movieData.rating}+</p>
                         </div>
 
-                        <p>{movieData.description}
-                        </p>
+                        <p>{movieData.description}</p>
                     </div>    
 
                     <ul className=''>
@@ -49,6 +56,15 @@ const ModalMovieInfo = ({setMovieInfo, movieData}) => {
                 </div>
 
             </div>
+            <h5 className='pl-4 my-5 font-bold text-xl'>More Like This</h5>
+            <div className='h-[250px] overflow-auto px-4 custom-scroll'>
+                <div className='grid grid-cols-3 gap-2 max-h-[500px]'>
+                    {getRelatedGenre.map((movie, key) => (<MovieRelatedCard movie={movie}/>))}
+                    
+    
+                </div>
+            </div>
+
         </main>
 
     </div>

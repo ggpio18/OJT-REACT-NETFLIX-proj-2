@@ -58,7 +58,6 @@ return (
 
     <Slider {...settings}>
 
-
       {getGroupings.map((movie, key) => (
       <div key={key}>
         <button className='relative' onClick={() => handleShowMovieInfo(movie)}>
@@ -68,7 +67,6 @@ return (
       </div>
       ))}
 
-    
       
     </Slider>
 

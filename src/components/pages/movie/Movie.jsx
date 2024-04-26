@@ -9,13 +9,19 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 import SliderBasic from './SliderBasic';
 import ModalMovieInfo from './ModalMovieInfo';
 import { movies } from './data';
-
-
+import Footer2 from '../../partials/Footer2';
+import SliderTop from './SliderTop';
+import ModalSearch from './ModalSearch';
 
 const Movie = () => {
 
     const [showMovieInfo, setMovieInfo] = React.useState(false)
     const [movieData, setmovieData] = React.useState(null)
+    const [search, setSearch] = React.useState(false)
+    
+
+
+    const handleShowSearch = () => setSearch(true);
 
   return (
     <>
@@ -42,7 +48,7 @@ const Movie = () => {
             {/* icons */}
             <div>
                 <ul className='flex items-center gap-5 text-white'>
-                    <li><button><FaSearch  className='text-xl'/></button></li>
+                    <li><button onClick={handleShowSearch}><FaSearch  className='text-xl'/></button></li>
                     <li><button><FaRegBell className='text-xl'/></button></li>
                     <li className='flex items-center gap-3'>
                     <button><img src={`${baseImgUrl2}/movie/user-icon.jpg`} alt=""  className='rounded-md size-[40px]'/></button>
@@ -68,12 +74,19 @@ const Movie = () => {
     <div className='slider-wrapper px-10 py-20 overflow-hidden'>
     <SliderBasic setMovieInfo={setMovieInfo} movies={movies} setmovieData={setmovieData} grouping="trending" sliderHeader="Trending Movies"/>
     <SliderBasic setMovieInfo={setMovieInfo} movies={movies} setmovieData={setmovieData} grouping="asia" sliderHeader="Asian Movies"/>
+    <SliderTop setMovieInfo={setMovieInfo} movies={movies} setmovieData={setmovieData} grouping="top10" sliderHeader="Top 10 Movies"/>
+    <SliderBasic setMovieInfo={setMovieInfo} movies={movies} setmovieData={setmovieData} grouping="anime" sliderHeader="Anime"/>
+    <SliderTop setMovieInfo={setMovieInfo} movies={movies} setmovieData={setmovieData} grouping="top10" sliderHeader="Top 10 Series"/>
 
 
     </div>
 
     </div>
     {showMovieInfo && <ModalMovieInfo setMovieInfo={setMovieInfo} movieData={movieData} />}
+
+    {search && <ModalSearch setSearch={setSearch}/>}
+
+    <Footer2/>
     </>
   )
 }
